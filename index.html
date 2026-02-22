@@ -13,16 +13,24 @@ table, th, td {
     <title>Freaky Touch</title>
     <link rel="stylesheet" href="/style.css"> 
     <link rel="icon" type="image/png" href="/images/favicon.ico"/>
+    <script type="text/javascript" src="/js/randomator.js"></script>
 </head>
-<body>
+<body class="mainview">
     <header>
-        <h1>
-            <img style='height: 50px;' src="/images/rasta_banana.gif"/>
-            Welcome to the 
-            <img style='height: 50px;' src="/images/rasta_banana.gif"/>
-            <br>
-            Freaky Touch Website
-        </h1>
+        <table class="title-table">
+            <tr>
+                <td>
+                    <h1 class="title-text">
+                        <img style='height: 50px;' src="/images/rasta_banana.gif"/>
+                        Welcome to the 
+                        <img style='height: 50px;' src="/images/rasta_banana.gif"/>
+                        <br>
+                        Freaky Touch Website
+                    </h1>
+                </td>
+            </tr>
+        </table>
+        <br>
         <div>
             <table class="nav-links">
                     <tr>
@@ -36,13 +44,22 @@ table, th, td {
         <br>
     </header>
     <main>
-        <img style='height: 100%; width: 100%; object-fit: contain; max-width:625px;' src="images/IMG_3309.jpeg"/>
-        <p>We are still warming up.</p>
+        <table class="content-table">
+            <tr>
+                <td>
+                    <img style='height: 100%; width: 100%; object-fit: contain; max-width:625px;' src="images/IMG_3309.jpeg"/>
+                    <p>We are still warming up.</p>
+                </td>
+            </tr>
+        </table>
     </main>
     <footer>
         <p>&copy; 2026 Freaky Touch</p>
     </footer>
 </body>
+<script type="text/javascript">
+    randomator();
+</script>
 </html>
 
 

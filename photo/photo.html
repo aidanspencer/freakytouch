@@ -6,21 +6,29 @@ table, th, td {
   text-align: center;
 }
 </style>
-<body>
+<body class="mainview">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freaky Touch - Photos</title>
     <link rel="stylesheet" href="/style.css"> 
     <link rel="icon" type="image/png" href="/images/favicon.ico"/>
+    <script type="text/javascript" src="/js/randomator.js"></script>
 </head>
 <body>
     <header>
-        <h1>
-            <img style='height: 50px;' src="/images/rasta_banana.gif"/>
-            Photos
-            <img style='height: 50px;' src="/images/rasta_banana.gif"/>
-        </h1>
+        <table class="title-table">
+            <tr>
+                <td>
+                    <h1 class="title-text">
+                        <img style='height: 50px;' src="/images/rasta_banana.gif"/>
+                        Photos
+                        <img style='height: 50px;' src="/images/rasta_banana.gif"/>
+                    </h1>
+                </td>
+            </tr>
+        </table>
+        <br>
         <div>
             <table class="nav-links">
                     <tr>
@@ -41,6 +49,9 @@ table, th, td {
         <p>&copy; 2026 Freaky Touch</p>
     </footer>
 </body>
+<script type="text/javascript">
+    randomator();
+</script>
 </html>
 
 

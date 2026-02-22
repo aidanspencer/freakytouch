@@ -1,8 +1,36 @@
+.title-table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width:400px;
+    background: #fff;
+}
+
+.title-text {
+    margin: 0px
+}
+
+.content-table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width:625px;
+    background: #fff;
+}
+
 .nav-links {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
     max-width:625px;
+    background: #fff;
+}
+
+.mainview {
+    height: 100%;
+    background-position: center;
+    background-repeat: repeat;
+    background-size:contain;
 }
 
 header {
@@ -11,6 +39,7 @@ header {
 
 footer {
     text-align: center;
+    color: #fff;
 }
 
 main {
