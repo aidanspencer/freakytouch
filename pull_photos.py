@@ -17,7 +17,7 @@ with open(output_filename, "w") as f:
         <table class="content-table">
             <tr>
                 <td>
-                    <img style='height: 100%; width: 100%; object-fit: contain; max-width:625px;' src="/images/photos/{}"/>
+                    <img style='width: 100%; max-width:625px;' src="/images/photos/{}"/>
                     <div style="text-align: center;">...</div>
                 </td>
             </tr>
