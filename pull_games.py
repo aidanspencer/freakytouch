@@ -42,7 +42,7 @@ for subdir, dirs, files in os.walk(directory_path):
     
     output_text += '''          <div class="{}">'''.format("left" if left_side else "right")
 
-    output_text += '''              <a href="/{}/"><img style='width: 100%; object-fit: contain;' src="/{}/icon.png"/></a>
+    output_text += '''              <a href="/{}/"><img style='width: 100%; max-height: 200px;' src="/{}/icon.png"/></a>
                 <div style="text-align: center;"><a href="/{}/">/{}</a></div>
             </div>'''.format(subdir_text,subdir_text,subdir_text,subdir_text.replace('games/',''))
 

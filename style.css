@@ -63,17 +63,10 @@ body {
   box-sizing: border-box;
 }
 
-.left {
+.left, .right {
   background-color: #b8a1ff;
   padding: 10px;
   float: left;
-  width: 50%;
-}
-
-.right {
-  background-color: #b8a1ff;
-  padding: 10px;
-  float: right;
   width: 50%;
 }
 
