@@ -81,6 +81,6 @@ body {
 /* Use a media query to add a break point at 800px: */
 @media screen and (max-width: 625px) {
   .left, .right {
-    width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+    width: 100%; /* The width is 100%, when the viewport is 625px or smaller */
   }
 }

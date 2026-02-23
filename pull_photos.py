@@ -2,7 +2,7 @@ import os
 
 # 1. Define the directory path to scan
 directory_path = "images/photos"  # Use "." for the current directory, or specify an absolute path 
-output_filename = "file_list.txt"
+output_filename = "photos_main_html.txt"
 
 # 2. Get the list of files in the directory
 # os.listdir() returns all entries (files and subdirectories)
@@ -26,4 +26,4 @@ with open(output_filename, "w") as f:
 '''.format(filename)
         f.write(text) # os.linesep adds a newline character appropriate for the OS
 
-print(f"File names have been written to {output_filename}")
+print(f"File names have been written to {output_filename}, insert between <main> tags")
