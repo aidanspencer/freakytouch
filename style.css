@@ -59,3 +59,28 @@ body {
     background-color: #31215F;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+.left {
+  background-color: #b8a1ff;
+  padding: 10px;
+  float: left;
+  width: 50%;
+}
+
+.right {
+  background-color: #b8a1ff;
+  padding: 10px;
+  float: left;
+  width: 50%;
+  color: #FFFFFF
+}
+
+/* Use a media query to add a break point at 800px: */
+@media screen and (max-width: 625px) {
+  .left, .right {
+    width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
+}
