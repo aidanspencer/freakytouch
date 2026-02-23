@@ -26,6 +26,15 @@
     background: white;
 }
 
+.game-links {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width:625px;
+    background: white;
+    table-layout: fixed;
+}
+
 .mainview {
     height: 100%;
     background-position: center;
