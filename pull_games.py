@@ -1,5 +1,6 @@
 #### Run this script to generate the index.html file for each folder in games/ containing an .swf file and icon.png
 #### Also creates games_index_main.html which should be inserted in the <main> tag in games/index.html
+#### Ignores folders beginning with '&'
 
 import os
 
@@ -28,6 +29,9 @@ for subdir, dirs, files in os.walk(directory_path):
     game_name = game_name.replace('-',' ')
     print(game_name.title())
     
+    if game_name.startswith('&'):
+        continue
+
     game_html = subdir_text + '/index.html'
     print(game_html)
 
