@@ -2,7 +2,7 @@ import os
 
 # 1. Define the directory path to scan
 directory_path = "images/photos"  # Use "." for the current directory, or specify an absolute path 
-output_filename = "gen_html/photos_main_html.html"
+output_filename = "photos_main_html.txt"
 
 # 2. Get the list of files in the directory
 # os.listdir() returns all entries (files and subdirectories)
@@ -18,7 +18,7 @@ with open(output_filename, "w") as f:
             <tr>
                 <td>
                     <img style='width: 100%; max-width:625px;' src="/images/photos/{}"/>
-                    <div style="text-align: center;">...</div>
+                    <!-- <div style="text-align: center;">...</div> -->
                 </td>
             </tr>
         </table>
