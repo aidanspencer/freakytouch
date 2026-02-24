@@ -2,7 +2,7 @@ import os
 
 # 1. Define the directory path to scan
 directory_path = "images/photos"  # Use "." for the current directory, or specify an absolute path 
-output_filename = "photos_main_html.txt"
+output_filename = "gen_html/photos_main_html.html"
 
 # 2. Get the list of files in the directory
 # os.listdir() returns all entries (files and subdirectories)

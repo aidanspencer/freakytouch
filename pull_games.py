@@ -2,7 +2,7 @@ import os
 
 # 1. Define the directory path to scan
 directory_path = "games"  # Use "." for the current directory, or specify an absolute path 
-output_filename = "gen_html/games_index_main_html.html"
+output_filename = "gen_html/games_index_main.html"
 
 # 2. Get the list of files in the directory
 # os.listdir() returns all entries (files and subdirectories)
@@ -39,12 +39,16 @@ for subdir, dirs, files in os.walk(directory_path):
 
     subdir_text = subdir.replace("\\", "/")
     print(subdir_text)
+
+    game_name = subdir_text.replace('games/','')
+    game_name = game_name.replace('-',' ')
+    print(game_name.title())
     
     output_text += '''          <div class="{}">'''.format("left" if left_side else "right")
 
     output_text += '''              <a href="/{}/"><img style='width: 100%; max-height: 200px;' src="/{}/icon.png"/></a>
                 <div style="text-align: center;"><a href="/{}/">/{}</a></div>
-            </div>'''.format(subdir_text,subdir_text,subdir_text,subdir_text.replace('games/',''))
+            </div>'''.format(subdir_text,subdir_text,subdir_text,game_name.title())
 
     left_side = not left_side
 
