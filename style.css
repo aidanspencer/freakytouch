@@ -27,6 +27,37 @@
     background: white;
 }
 
+ul.nav-bar {
+    list-style-type: none;
+    margin: 10px;
+    padding: 0px;
+    text-align: center;
+}
+
+li.nav-item {
+  display: inline;
+}
+
+a:link.nav-link, a:visited.nav-link {
+    display: inline-block;
+    /* padding: 10px; */
+    margin: 1px;
+    text-align: center;
+    text-decoration: none;
+    color: #000000;
+    /* background-color: #bbbbaa; */
+    background-color: #FFFFFF;
+    border-style: solid;
+    border-width: 1px;
+    padding: .2em 2em;
+    border-radius: 10px;
+}
+
+a:hover.nav-link, a:active.nav-link {
+    background-color: #b8a1ff;
+    color: #31215F;
+}
+
 .nav-links {
     margin-left: auto;
     margin-right: auto;
@@ -85,4 +116,3 @@ body {
     width: 100%; /* The width is 100%, when the viewport is 625px or smaller */
   }
 }
-
