@@ -116,3 +116,18 @@ body {
     width: 100%; /* The width is 100%, when the viewport is 625px or smaller */
   }
 }
+
+.testframe {    
+    border-image-slice: 210 210 210 210;
+    border-image-width: 100px 100px 100px 100px;
+    border-image-repeat: stretch stretch;
+    border-image-source: url(/images/frames/frame6.png);
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width:400px;
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+}
