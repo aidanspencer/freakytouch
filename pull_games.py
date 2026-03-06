@@ -19,6 +19,7 @@ left_side = True
 output_text += '''      <div style="width: 100%; max-width: 625px; margin-left: auto; margin-right: auto;">'''
 
 for subdir, dirs, files in os.walk(directory_path):
+    dirs.sort()
     if subdir == 'games':
         continue
 
