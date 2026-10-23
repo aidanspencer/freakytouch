@@ -49,7 +49,7 @@ export default {
             return reply(502, "Something went wrong saving your photo. Try again later.");
         }
         await notify(env, pullRequest, caption);
-        return reply(200, "Thanks! Your photo will show up here once it's approved.");
+        return reply(200, "Thanks! Your photo will show up here after it's approved by Toom.");
     },
 };
 
