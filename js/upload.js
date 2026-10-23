@@ -5,6 +5,18 @@ const MAX_SIZE = 1600; // Longest side in pixels, same as MAX_SIZE in pull_photo
 
 const form = document.getElementById('upload-form');
 const uploadStatus = document.getElementById('upload-status');
+const captcha = document.getElementById('turnstile');
+let captchaId;
+
+// The form starts collapsed, and Turnstile can't run while hidden, so show the CAPTCHA the first time the form is opened.
+document.getElementById('upload').addEventListener('toggle', function renderCaptcha() {
+    if (captchaId !== undefined) return;
+    if (!window.turnstile) {
+        setTimeout(renderCaptcha, 200); // Turnstile's script is still loading
+        return;
+    }
+    captchaId = turnstile.render(captcha, { sitekey: captcha.dataset.sitekey });
+});
 
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -29,7 +41,7 @@ form.addEventListener('submit', async (event) => {
     } catch (error) {
         uploadStatus.textContent = "Couldn't upload that photo. Try a JPG or PNG.";
     }
-    turnstile.reset();
+    turnstile.reset(captchaId);
     button.disabled = false;
 });
 

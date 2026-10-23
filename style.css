@@ -95,6 +95,12 @@ a:hover.nav-link, a:active.nav-link {
     max-width: 625px;
 }
 
+.upload summary {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 4px;
+}
+
 .upload-form {
     display: flex;
     flex-direction: column;
