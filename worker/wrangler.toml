@@ -1,0 +1,13 @@
+name = "freakytouch-uploads"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+GITHUB_OWNER = "aidanspencer"
+GITHUB_REPO = "freakytouch"
+# Sites allowed to send uploads. localhost is for testing with `python -m http.server`; remove it once everything works.
+ALLOWED_ORIGINS = "https://www.freakytouch.com,https://freakytouch.com,http://localhost:8000"
+
+# Secrets (set with `npx wrangler secret put <NAME>`, never put them in this file):
+#   GITHUB_TOKEN      fine-grained token for this repo with Contents + Pull requests read/write
+#   TURNSTILE_SECRET  secret key of the Turnstile widget

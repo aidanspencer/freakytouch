@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/style.css">
     <link rel="icon" href="/images/favicon.ico">
     <script src="/js/randomator.js" defer></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script src="/js/upload.js" defer></script>
 </head>
 <body class="mainview">
     <header>
@@ -33,6 +35,23 @@
         </nav>
     </header>
     <main>
+        <table class="content-table">
+            <tr>
+                <td>
+                    <h3>Add a photo</h3>
+                    <form id="upload-form" class="upload-form">
+                        <input type="file" name="photo" accept="image/*" required>
+                        <input type="text" name="caption" maxlength="200" placeholder="Caption (optional)">
+                        <!-- Turnstile site key (public). The matching secret key is set on the Cloudflare Worker. -->
+                        <div class="cf-turnstile" data-sitekey="0x4AAAAAAFhqpMp0EJgwUm7n"></div>
+                        <button type="submit">Upload</button>
+                    </form>
+                    <p id="upload-status"></p>
+                </td>
+            </tr>
+        </table>
+        <br>
+
         <!-- BEGIN GENERATED: run pull_photos.py to add new photos -->
         <table class="content-table">
             <tr>

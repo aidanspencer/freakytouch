@@ -1,0 +1,34 @@
+# Adds new photos in images/photos/ to photos/index.html whenever they land on main
+# (e.g. when an upload PR from the Worker is merged, or a photo is added on github.com).
+name: Update photos page
+
+on:
+  push:
+    branches: [main]
+    paths: ['images/photos/**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: photos
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main # latest main, in case another run pushed while this one was queued
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: pip install pillow
+      - run: python pull_photos.py
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/photos photos/index.html
+          git diff --cached --quiet || (git commit -m "Add new photos to photos page" && git push)
