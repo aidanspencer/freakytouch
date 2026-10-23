@@ -1,10 +1,13 @@
-#### Run this script to add new photos from images/photos/ to photos/index.html
+#### Run this script to sync photos/index.html with the photos in images/photos/
 #### Photos that aren't on the page yet are added to the top; existing photos keep their order and captions
+#### Photos whose file has been deleted from images/photos/ are removed from the page
+#### (so to take a photo down, delete its file; deleting only its HTML would get it added back)
 #### A photo's caption is read from images/photos/captions/<photo filename>.txt (shows "..." if there isn't one)
 #### New photos larger than MAX_SIZE pixels are shrunk (needs Pillow: pip install pillow; skipped if it isn't installed)
 
 import html
 import os
+import re
 
 from generated import generated_section, replace_generated
 
@@ -48,6 +51,19 @@ with open(page, encoding="utf-8") as f:
 start, end = generated_section(page_html)
 existing = page_html[start:end]
 
+# Remove photos whose file is gone. Each photo is a <table class="content-table"> block followed by <br>.
+removed_photos = []
+def remove_if_deleted(match):
+    filename = html.unescape(re.search(r'src="/images/photos/([^"]*)"', match.group(0)).group(1))
+    if os.path.isfile(os.path.join(photos_dir, filename)):
+        return match.group(0)
+    removed_photos.append(filename)
+    caption_file = os.path.join(captions_dir, filename + ".txt")
+    if os.path.isfile(caption_file):
+        os.remove(caption_file)
+    return ''
+existing = re.sub(r'[ \t]*<table class="content-table">.*?</table>\s*<br>\n(?:[ \t]*\n)?', remove_if_deleted, existing, flags=re.DOTALL)
+
 new_photos = [
     filename for filename in sorted(os.listdir(photos_dir))
     if filename.lower().endswith(image_extensions)
@@ -78,3 +94,4 @@ with open(page, "w", encoding="utf-8") as f:
     f.write(replace_generated(page_html, content + existing.lstrip('\n').removesuffix('        ')))
 
 print(f"Added {len(new_photos)} new photo(s) to {page}: {new_photos}")
+print(f"Removed {len(removed_photos)} deleted photo(s) from {page}: {removed_photos}")

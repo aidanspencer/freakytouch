@@ -83,6 +83,14 @@ Each upload arrives as a pull request. You get a GitHub notification (and an ema
 
 This works in the GitHub mobile app too: **Pull requests** → open the PR → **Merge** or **Close**.
 
+## Removing a photo
+Delete the photo's **file** from `images/photos/`. Don't just delete its HTML from `photos/index.html`: the Action adds every
+photo in the folder that isn't on the page, so the photo would come back the next time it runs.
+
+On github.com: open `images/photos/`, click the photo, click the **...** menu (top right of the file view) → **Delete file** →
+**Commit changes**. The Action then removes it from the Photos page, along with its caption file.
+Locally: delete the file, run `python pull_photos.py`, then commit and push.
+
 ## Troubleshooting
 - **"The CAPTCHA check failed"**: the site key in `photos/index.html` and the `TURNSTILE_SECRET` on the Worker come from different
   widgets, or the site's hostname isn't in the widget's hostname list (step 1.2).
