@@ -1,19 +1,13 @@
 <!DOCTYPE html>
-<html>
-<style>
-table, th, td {
-  border:1px solid black;
-  text-align: center;
-}
-</style>
-<body>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freaky Touch - Games</title>
-    <link rel="stylesheet" href="/style.css"> 
-    <link rel="icon" type="image/png" href="/images/favicon.ico"/>
-    <script type="text/javascript" src="/js/randomator.js"></script>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="/images/favicon.ico">
+    <script src="/js/randomator.js" defer></script>
+    <script src="/js/random_gif.js" defer></script>
 </head>
 <body class="mainview">
     <header>
@@ -21,14 +15,14 @@ table, th, td {
             <tr>
                 <td>
                     <h1 class="title-text">
-                        <img style='height: 50px;' src="/images/rasta_banana.gif"/>
+                        <img style="height: 50px; padding-right: 20px;" id="randomImage" src="/images/rasta_banana.gif" alt="">
                         Games
-                        <img style='height: 50px;' src="/images/rasta_banana.gif"/>
+                        <img style="height: 50px; padding-left: 20px;" id="randomImage2" src="/images/rasta_banana.gif" alt="">
                     </h1>
                 </td>
             </tr>
         </table>
-        <div style="width: 100%; max-width: 710px; margin-left: auto; margin-right: auto;">
+        <nav class="nav">
             <ul class="nav-bar">
                 <li class="nav-item"><a class="nav-link" href="/"> Home </a></li>
                 <li class="nav-item"><a class="nav-link" href="/photos/">Photos</a></li>
@@ -37,20 +31,19 @@ table, th, td {
                 <li class="nav-item"><a class="nav-link" href="/games/">Games</a></li>
                 <li class="nav-item"><a class="nav-link" href="/">Store</a></li>
             </ul>
-        </div>
+        </nav>
     </header>
     <main>
+        <!-- BEGIN GENERATED: run pull_games.py to update -->
         <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
-        <object style="width: 100%; max-width: 625px;">
+        <object class="game">
             <param name="movie" value="Avalanche.swf">
-            <embed src="Avalanche.swf"></embed>
+            <embed src="Avalanche.swf">
         </object>
+        <!-- END GENERATED -->
     </main>
     <footer>
         <p>&copy; 2026 Freaky Touch</p>
     </footer>
 </body>
-<script type="text/javascript">
-    randomator();
-</script>
 </html>

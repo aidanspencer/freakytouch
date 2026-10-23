@@ -1,8 +1,37 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #31215F;
+}
+
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+}
+
+header, main {
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    color: #fff;
+}
+
+.mainview {
+    height: 100%;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: contain;
+}
+
 .title-table {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-    max-width:400px;
+    max-width: 400px;
     background-color: white;
 }
 
@@ -13,18 +42,15 @@
     justify-content: center;
 }
 
-.title_img {
+.title-gif {
     height: 50px;
-    padding-left: 20px;
-    padding-right: 20px;
 }
 
-.content-table {
+.nav {
+    width: 100%;
+    max-width: 710px;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
-    max-width:625px;
-    background: white;
 }
 
 ul.nav-bar {
@@ -35,17 +61,15 @@ ul.nav-bar {
 }
 
 li.nav-item {
-  display: inline;
+    display: inline;
 }
 
 a:link.nav-link, a:visited.nav-link {
     display: inline-block;
-    /* padding: 10px; */
     margin: 1px;
     text-align: center;
     text-decoration: none;
     color: #000000;
-    /* background-color: #bbbbaa; */
     background-color: #FFFFFF;
     border-style: solid;
     border-width: 1px;
@@ -58,66 +82,60 @@ a:hover.nav-link, a:active.nav-link {
     color: #31215F;
 }
 
-.nav-links {
+.content-table {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-    max-width:625px;
+    max-width: 625px;
     background: white;
 }
 
-.game-links {
+.content-img {
+    width: 100%;
+    max-width: 625px;
+}
+
+.video {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 625px;
+    height: 300px;
+    border: 0;
+}
+
+.game {
+    width: 100%;
+    max-width: 625px;
+}
+
+.game-grid {
+    display: flow-root; /* contain the floated .left/.right cells */
+    width: 100%;
+    max-width: 625px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.game-icon {
     width: 100%;
-    max-width:625px;
-    background: white;
-    table-layout: fixed;
-}
-
-.mainview {
-    height: 100%;
-    background-position: center;
-    background-repeat: repeat;
-    background-size:contain;
-}
-
-header {
-    text-align: center;
-}
-
-footer {
-    text-align: center;
-    color: #fff;
-}
-
-main {
-    text-align: center;
-}
-
-body {
-    background-color: #31215F;
-}
-
-* {
-  box-sizing: border-box;
+    max-height: 200px;
 }
 
 .left, .right {
-  background-color: #b8a1ff;
-  padding: 10px;
-  float: left;
-  width: 50%;
+    background-color: #b8a1ff;
+    padding: 10px;
+    float: left;
+    width: 50%;
 }
 
-/* Use a media query to add a break point at 800px: */
+/* Stack the game grid into one column on narrow screens */
 @media screen and (max-width: 625px) {
-  .left, .right {
-    width: 100%; /* The width is 100%, when the viewport is 625px or smaller */
-  }
+    .left, .right {
+        width: 100%;
+    }
 }
 
-.testframe {    
+.testframe {
     border-image-slice: 210 210 210 210;
     border-image-width: 100px 100px 100px 100px;
     border-image-repeat: stretch stretch;
@@ -125,7 +143,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-    max-width:400px;
+    max-width: 400px;
     background-color: white;
     padding-top: 20px;
     padding-bottom: 20px;

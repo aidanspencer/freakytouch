@@ -1,124 +1,57 @@
-#### Run this script to generate the index.html file for each folder in games/ containing an .swf file and icon.png
-#### Also creates games_index_main.html which should be inserted in the <main> tag in games/index.html
+#### Run this script to rebuild the games pages from the folders in games/
+#### Each game folder needs an .swf file and an icon (icon.png, icon.jpg, ...)
+#### - Writes games/<game>/index.html for each game, using games/index.html as the page template
+#### - Rebuilds the game grid in games/index.html (between the BEGIN GENERATED / END GENERATED comments)
 #### Ignores folders beginning with '&'
 
 import os
 
-# 1. Define the directory path to scan
-directory_path = "games"  # Use "." for the current directory, or specify an absolute path 
-output_filename = "gen_html/games_index_main.html"
+from generated import replace_generated
 
-# 2. Get the list of files in the directory
-# os.listdir() returns all entries (files and subdirectories)
-entries = os.listdir(directory_path)
-files_list = [entry for entry in entries if os.path.isfile(os.path.join(directory_path, entry))]
+games_dir = "games"
+games_page = "games/index.html"
 
-output_text = ''
+with open(games_page) as f:
+    template = f.read()
+
+grid = '''
+        <div class="game-grid">'''
 left_side = True
 
-output_text += '''      <div style="width: 100%; max-width: 625px; margin-left: auto; margin-right: auto;">'''
-
-for subdir, dirs, files in os.walk(directory_path):
-    dirs.sort()
-    if subdir == 'games':
+for game in sorted(os.listdir(games_dir)):
+    game_dir = os.path.join(games_dir, game)
+    if not os.path.isdir(game_dir) or game.startswith('&'):
         continue
 
-    subdir_text = subdir.replace("\\", "/")
-    print(subdir_text)
+    files = sorted(os.listdir(game_dir))
+    swf_filename = next(f for f in files if f.endswith('.swf'))
+    icon_filename = next(f for f in files if f.startswith('icon.'))
+    game_name = game.replace('-', ' ').title()
+    print(f"{game_name}: {swf_filename}, {icon_filename}")
 
-    game_name = subdir_text.replace('games/','')
-    game_name = game_name.replace('-',' ')
-    print(game_name.title())
-    
-    if game_name.startswith('&'):
-        continue
-
-    game_html = subdir_text + '/index.html'
-    print(game_html)
-
-    output_text += '''          <div class="{}">'''.format("left" if left_side else "right")
-
-    output_text += '''              <a href="/{}/"><img style='width: 100%; max-height: 200px;' src="/{}/icon.png"/></a>
-                <div style="text-align: center;"><a href="/{}/">{}</a></div>
-            </div>'''.format(subdir_text,subdir_text,subdir_text,game_name.title())
-
+    grid += '''
+            <div class="{}">
+                <a href="/games/{}/"><img class="game-icon" src="/games/{}/{}" alt="{}"></a>
+                <div><a href="/games/{}/">{}</a></div>
+            </div>'''.format("left" if left_side else "right", game, game, icon_filename, game_name, game, game_name)
     left_side = not left_side
 
-    files = []
-    for file in os.listdir(subdir):
-        if file.endswith('.swf') and os.path.isfile(os.path.join(subdir_text, file)):
-            files.append(file)
-    print(files[0])
-
-    swf_filename = files[0]
-    
-    index_html = '''<!DOCTYPE html>
-<html>
-<style>
-table, th, td {
-  border:1px solid black;
-  text-align: center;
-}
-</style>
-'''
-    index_html += '''<body>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freaky Touch - Games</title>
-    <link rel="stylesheet" href="/style.css"> 
-    <link rel="icon" type="image/png" href="/images/favicon.ico"/>
-    <script type="text/javascript" src="/js/randomator.js"></script>
-</head>
-<body class="mainview">
-    <header>
-        <table class="title-table">
-            <tr>
-                <td>
-                    <h1 class="title-text">
-                        <img style='height: 50px;' src="/images/rasta_banana.gif"/>
-                        Games
-                        <img style='height: 50px;' src="/images/rasta_banana.gif"/>
-                    </h1>
-                </td>
-            </tr>
-        </table>
-        <div style="width: 100%; max-width: 710px; margin-left: auto; margin-right: auto;">
-            <ul class="nav-bar">
-                <li class="nav-item"><a class="nav-link" href="/"> Home </a></li>
-                <li class="nav-item"><a class="nav-link" href="/photos/">Photos</a></li>
-                <li class="nav-item"><a class="nav-link" href="/videos/">Videos</a></li>
-                <li class="nav-item"><a class="nav-link" href="/team/"> Team </a></li>
-                <li class="nav-item"><a class="nav-link" href="/games/">Games</a></li>
-                <li class="nav-item"><a class="nav-link" href="/">Store</a></li>
-            </ul>
-        </div>
-    </header>
-    <main>
+    player = '''
         <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
-        <object style="width: 100%; max-width: 625px;">
+        <object class="game">
             <param name="movie" value="{}">
-            <embed src="{}"></embed>
+            <embed src="{}">
         </object>
-    </main>
-    <footer>
-        <p>&copy; 2026 Freaky Touch</p>
-    </footer>
-</body>
-<script type="text/javascript">
-    randomator();
-</script>
-</html>
 '''.format(swf_filename, swf_filename)
 
-    with open(game_html, "w") as f:
-        f.write(index_html)
+    with open(os.path.join(game_dir, "index.html"), "w") as f:
+        f.write(replace_generated(template, player))
 
-output_text += '''        </div>
+grid += '''
+        </div>
+'''
 
-        '''
+with open(games_page, "w") as f:
+    f.write(replace_generated(template, grid))
 
-with open(output_filename, "w") as f:
-    f.write(output_text)
-
-print(f"Games have been written to {output_filename}, insert between <main> tags")
+print(f"Games have been written to {games_page}")

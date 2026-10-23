@@ -1,12 +1,13 @@
-var images = 
+// Picks a random background image for the page. Loaded with `defer` so the body exists when it runs.
+var images =
         [
             "/images/bg/035C.jpg",
             "/images/bg/036C.jpg",
             "/images/bg/081C.jpg",
-            "/images/bg/096C.jpg",
+            "/images/bg/096.GIF",
             "/images/bg/145.GIF",
             "/images/bg/150.GIF",
-            "/images/bg/163.GIF", 
+            "/images/bg/163.GIF",
             "/images/bg/170.GIF",
             "/images/bg/515.GIF"
         ];

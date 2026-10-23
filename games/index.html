@@ -1,19 +1,13 @@
 <!DOCTYPE html>
-<html>
-<style>
-table, th, td {
-  border:1px solid black;
-  text-align: center;
-}
-</style>
-<body>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freaky Touch - Games</title>
-    <link rel="stylesheet" href="/style.css"> 
-    <link rel="icon" type="image/png" href="/images/favicon.ico"/>
-    <script type="text/javascript" src="/js/randomator.js"></script>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="/images/favicon.ico">
+    <script src="/js/randomator.js" defer></script>
+    <script src="/js/random_gif.js" defer></script>
 </head>
 <body class="mainview">
     <header>
@@ -21,15 +15,14 @@ table, th, td {
             <tr>
                 <td>
                     <h1 class="title-text">
-                        <img style="height: 50px; padding-right: 20px;" src="/images/rasta_banana.gif" alt='' id="randomImage">              
+                        <img style="height: 50px; padding-right: 20px;" id="randomImage" src="/images/rasta_banana.gif" alt="">
                         Games
-                        <img style="height: 50px; padding-left: 20px;" src="/images/rasta_banana.gif" alt='' id="randomImage2">
-                        <script type="text/javascript" src="/js/random_gif.js"></script>
+                        <img style="height: 50px; padding-left: 20px;" id="randomImage2" src="/images/rasta_banana.gif" alt="">
                     </h1>
                 </td>
             </tr>
         </table>
-        <div style="width: 100%; max-width: 710px; margin-left: auto; margin-right: auto;">
+        <nav class="nav">
             <ul class="nav-bar">
                 <li class="nav-item"><a class="nav-link" href="/"> Home </a></li>
                 <li class="nav-item"><a class="nav-link" href="/photos/">Photos</a></li>
@@ -38,121 +31,104 @@ table, th, td {
                 <li class="nav-item"><a class="nav-link" href="/games/">Games</a></li>
                 <li class="nav-item"><a class="nav-link" href="/">Store</a></li>
             </ul>
-        </div>
+        </nav>
     </header>
     <main>
-        <div style="width: 100%; max-width: 625px; margin-left: auto; margin-right: auto;">
-            <div class="left"> <a href="/games/age-of-war/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/age-of-war/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/age-of-war/">Age Of War</a></div>
+        <!-- BEGIN GENERATED: run pull_games.py to update -->
+        <div class="game-grid">
+            <div class="left">
+                <a href="/games/age-of-war/"><img class="game-icon" src="/games/age-of-war/icon.png" alt="Age Of War"></a>
+                <div><a href="/games/age-of-war/">Age Of War</a></div>
             </div>
-            <div class="right"> <a href="/games/avalanche/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/avalanche/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/avalanche/">Avalanche</a></div>
+            <div class="right">
+                <a href="/games/avalanche/"><img class="game-icon" src="/games/avalanche/icon.png" alt="Avalanche"></a>
+                <div><a href="/games/avalanche/">Avalanche</a></div>
             </div>
-            <div class="left"> <a href="/games/bloxorz/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/bloxorz/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/bloxorz/">Bloxorz</a></div>
+            <div class="left">
+                <a href="/games/bloxorz/"><img class="game-icon" src="/games/bloxorz/icon.png" alt="Bloxorz"></a>
+                <div><a href="/games/bloxorz/">Bloxorz</a></div>
             </div>
-            <div class="right"> <a href="/games/bubble-trouble/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/bubble-trouble/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/bubble-trouble/">Bubble Trouble</a></div>
+            <div class="right">
+                <a href="/games/bubble-trouble/"><img class="game-icon" src="/games/bubble-trouble/icon.png" alt="Bubble Trouble"></a>
+                <div><a href="/games/bubble-trouble/">Bubble Trouble</a></div>
             </div>
-            <div class="left"> <a href="/games/cartoon-cove-golf/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/cartoon-cove-golf/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/cartoon-cove-golf/">Cartoon Cove Golf</a></div>
+            <div class="left">
+                <a href="/games/cartoon-cove-golf/"><img class="game-icon" src="/games/cartoon-cove-golf/icon.png" alt="Cartoon Cove Golf"></a>
+                <div><a href="/games/cartoon-cove-golf/">Cartoon Cove Golf</a></div>
             </div>
-            <div class="right"> <a href="/games/cubefield/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/cubefield/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/cubefield/">Cubefield</a></div>
+            <div class="right">
+                <a href="/games/cubefield/"><img class="game-icon" src="/games/cubefield/icon.png" alt="Cubefield"></a>
+                <div><a href="/games/cubefield/">Cubefield</a></div>
             </div>
-            <div class="left"> <a href="/games/electric-man-2/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/electric-man-2/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/electric-man-2/">Electric Man 2</a></div>
+            <div class="left">
+                <a href="/games/electric-man-2/"><img class="game-icon" src="/games/electric-man-2/icon.png" alt="Electric Man 2"></a>
+                <div><a href="/games/electric-man-2/">Electric Man 2</a></div>
             </div>
-            <div class="right"> <a href="/games/fancy-pants/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/fancy-pants/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/fancy-pants/">Fancy Pants</a></div>
+            <div class="right">
+                <a href="/games/fancy-pants/"><img class="game-icon" src="/games/fancy-pants/icon.png" alt="Fancy Pants"></a>
+                <div><a href="/games/fancy-pants/">Fancy Pants</a></div>
             </div>
-            <div class="left"> <a href="/games/frogger/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/frogger/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/frogger/">Frogger</a></div>
+            <div class="left">
+                <a href="/games/frogger/"><img class="game-icon" src="/games/frogger/icon.png" alt="Frogger"></a>
+                <div><a href="/games/frogger/">Frogger</a></div>
             </div>
-            <div class="right"> <a href="/games/helicopter-game/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/helicopter-game/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/helicopter-game/">Helicopter Game</a></div>
+            <div class="right">
+                <a href="/games/helicopter-game/"><img class="game-icon" src="/games/helicopter-game/icon.png" alt="Helicopter Game"></a>
+                <div><a href="/games/helicopter-game/">Helicopter Game</a></div>
             </div>
-            <div class="left"> <a href="/games/hemp-tycoon/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/hemp-tycoon/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/hemp-tycoon/">Hemp Tycoon</a></div>
+            <div class="left">
+                <a href="/games/hemp-tycoon/"><img class="game-icon" src="/games/hemp-tycoon/icon.png" alt="Hemp Tycoon"></a>
+                <div><a href="/games/hemp-tycoon/">Hemp Tycoon</a></div>
             </div>
-            <div class="right"> <a href="/games/interactive-buddy/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/interactive-buddy/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/interactive-buddy/">Interactive Buddy</a></div>
+            <div class="right">
+                <a href="/games/interactive-buddy/"><img class="game-icon" src="/games/interactive-buddy/icon.png" alt="Interactive Buddy"></a>
+                <div><a href="/games/interactive-buddy/">Interactive Buddy</a></div>
             </div>
-            <div class="left"> <a href="/games/kitten-cannon/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/kitten-cannon/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/kitten-cannon/">Kitten Cannon</a></div>
+            <div class="left">
+                <a href="/games/kitten-cannon/"><img class="game-icon" src="/games/kitten-cannon/icon.png" alt="Kitten Cannon"></a>
+                <div><a href="/games/kitten-cannon/">Kitten Cannon</a></div>
             </div>
-            <div class="right"> <a href="/games/line-rider/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/line-rider/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/line-rider/">Line Rider</a></div>
+            <div class="right">
+                <a href="/games/line-rider/"><img class="game-icon" src="/games/line-rider/icon.png" alt="Line Rider"></a>
+                <div><a href="/games/line-rider/">Line Rider</a></div>
             </div>
-            <div class="left"> <a href="/games/max-dirt-bike/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/max-dirt-bike/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/max-dirt-bike/">Max Dirt Bike</a></div>
+            <div class="left">
+                <a href="/games/max-dirt-bike/"><img class="game-icon" src="/games/max-dirt-bike/icon.png" alt="Max Dirt Bike"></a>
+                <div><a href="/games/max-dirt-bike/">Max Dirt Bike</a></div>
             </div>
-            <div class="right"> <a href="/games/mini-putt/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/mini-putt/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/mini-putt/">Mini Putt</a></div>
+            <div class="right">
+                <a href="/games/mini-putt/"><img class="game-icon" src="/games/mini-putt/icon.png" alt="Mini Putt"></a>
+                <div><a href="/games/mini-putt/">Mini Putt</a></div>
             </div>
-            <div class="left"> <a href="/games/redbeard/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/redbeard/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/redbeard/">Redbeard</a></div>
+            <div class="left">
+                <a href="/games/redbeard/"><img class="game-icon" src="/games/redbeard/icon.png" alt="Redbeard"></a>
+                <div><a href="/games/redbeard/">Redbeard</a></div>
             </div>
-            <div class="right"> <a href="/games/run/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/run/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/run/">Run</a></div>
+            <div class="right">
+                <a href="/games/run/"><img class="game-icon" src="/games/run/icon.png" alt="Run"></a>
+                <div><a href="/games/run/">Run</a></div>
             </div>
-            <div class="left"> <a href="/games/super-smash-flash/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/super-smash-flash/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/super-smash-flash/">Super Smash Flash</a></div>
+            <div class="left">
+                <a href="/games/super-smash-flash/"><img class="game-icon" src="/games/super-smash-flash/icon.png" alt="Super Smash Flash"></a>
+                <div><a href="/games/super-smash-flash/">Super Smash Flash</a></div>
             </div>
-            <div class="right"> <a href="/games/the-impossible-quiz/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/the-impossible-quiz/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/the-impossible-quiz/">The Impossible Quiz</a></div>
+            <div class="right">
+                <a href="/games/the-impossible-quiz/"><img class="game-icon" src="/games/the-impossible-quiz/icon.png" alt="The Impossible Quiz"></a>
+                <div><a href="/games/the-impossible-quiz/">The Impossible Quiz</a></div>
             </div>
-            <div class="left"> <a href="/games/the-worlds-hardest-game/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/the-worlds-hardest-game/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/the-worlds-hardest-game/">The Worlds Hardest Game</a></div>
+            <div class="left">
+                <a href="/games/the-worlds-hardest-game/"><img class="game-icon" src="/games/the-worlds-hardest-game/icon.png" alt="The Worlds Hardest Game"></a>
+                <div><a href="/games/the-worlds-hardest-game/">The Worlds Hardest Game</a></div>
             </div>
-            <div class="right"> <a href="/games/wonderputt/"><img style='width: 100%; max-height: 200px;'
-                        src="/games/wonderputt/icon.png" /></a>
-                <div style="text-align: center;"><a href="/games/wonderputt/">Wonderputt</a></div>
+            <div class="right">
+                <a href="/games/wonderputt/"><img class="game-icon" src="/games/wonderputt/icon.png" alt="Wonderputt"></a>
+                <div><a href="/games/wonderputt/">Wonderputt</a></div>
             </div>
         </div>
-
-        <table style="border: none; border-collapse: collapse; margin-left: auto; margin-right: auto; width: 100%; max-width: 625px;">
-            <tr style="border: none;">
-                <td style="border: none;">
-                </td>
-            </tr>
-        </table>
+        <!-- END GENERATED -->
     </main>
     <footer>
         <p>&copy; 2026 Freaky Touch</p>
     </footer>
 </body>
-<script type="text/javascript">
-    randomator();
-</script>
 </html>
-
-
-
-
-
-
-
-
-

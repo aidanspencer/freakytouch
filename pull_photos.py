@@ -1,29 +1,40 @@
+#### Run this script to add new photos from images/photos/ to photos/index.html
+#### Photos that aren't on the page yet are added to the top; existing photos keep their order and captions
+
 import os
 
-# 1. Define the directory path to scan
-directory_path = "images/photos"  # Use "." for the current directory, or specify an absolute path 
-output_filename = "photos_main_html.txt"
+from generated import generated_section, replace_generated
 
-# 2. Get the list of files in the directory
-# os.listdir() returns all entries (files and subdirectories)
-entries = os.listdir(directory_path)
-files_list = [entry for entry in entries if os.path.isfile(os.path.join(directory_path, entry))]
+photos_dir = "images/photos"
+page = "photos/index.html"
 
-# 3. Write the file names to a text file
-with open(output_filename, "w") as f:
-    for filename in files_list:
-        text = ''
-        text += '''
-        <table class="content-table">
+with open(page) as f:
+    html = f.read()
+
+start, end = generated_section(html)
+existing = html[start:end]
+
+new_photos = [
+    filename for filename in sorted(os.listdir(photos_dir))
+    if os.path.isfile(os.path.join(photos_dir, filename))
+    and f'src="/images/photos/{filename}"' not in existing
+]
+
+content = '\n'
+for filename in new_photos:
+    content += '''        <table class="content-table">
             <tr>
                 <td>
-                    <img style='width: 100%; max-width:625px;' src="/images/photos/{}"/>
-                    <!-- <div style="text-align: center;">...</div> -->
+                    <img class="content-img" src="/images/photos/{}" alt="">
+                    <!-- <div>...</div> -->
                 </td>
             </tr>
         </table>
         <br>
-'''.format(filename)
-        f.write(text) # os.linesep adds a newline character appropriate for the OS
 
-print(f"File names have been written to {output_filename}, insert between <main> tags")
+'''.format(filename)
+
+with open(page, "w") as f:
+    f.write(replace_generated(html, content + existing.lstrip('\n').removesuffix('        ')))
+
+print(f"Added {len(new_photos)} new photo(s) to {page}: {new_photos}")
