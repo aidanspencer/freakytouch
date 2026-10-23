@@ -11,3 +11,4 @@ ALLOWED_ORIGINS = "https://www.freakytouch.com,https://freakytouch.com,http://lo
 # Secrets (set with `npx wrangler secret put <NAME>`, never put them in this file):
 #   GITHUB_TOKEN      fine-grained token for this repo with Contents + Pull requests read/write
 #   TURNSTILE_SECRET  secret key of the Turnstile widget
+#   NTFY_TOPIC        (optional) ntfy.sh topic for upload notifications; long and random, since anyone who knows it can read them

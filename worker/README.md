@@ -44,6 +44,7 @@ Captions are saved as `images/photos/captions/<photo filename>.txt`. `pull_photo
    | `ALLOWED_ORIGINS` | Text | `https://www.freakytouch.com,https://freakytouch.com,http://localhost:8000` |
    | `GITHUB_TOKEN` | Secret | the token from step 2 |
    | `TURNSTILE_SECRET` | Secret | the Turnstile secret key from step 1 |
+   | `NTFY_TOPIC` | Secret | (optional) your ntfy topic, see step 6 |
 
 4. Copy the Worker's URL (`https://freakytouch-uploads.<something>.workers.dev`) into `UPLOAD_URL` in `js/upload.js`.
 
@@ -72,8 +73,22 @@ That's the only repo setting needed. The Action already has permission to commit
 
 If the upload shows an error instead, see **Troubleshooting** below.
 
+### 6. Upload notifications (ntfy)
+GitHub won't notify you about upload PRs, because the Worker opens them with your own token and GitHub never notifies
+you about your own activity. Instead, the Worker sends a push notification through [ntfy](https://ntfy.sh), a free app.
+
+1. Pick a topic name: long and random, because anyone who knows it can read your notifications or send fake ones,
+   e.g. `freakytouch-uploads-` followed by 16 random letters/numbers.
+2. Install **ntfy** on your phone (App Store / Google Play), tap **+**, enter the topic name, and **Subscribe**.
+   No account needed. Anyone else who should approve uploads can subscribe to the same topic.
+3. Cloudflare dashboard → your Worker → **Settings** → **Variables and Secrets** → **Add**: name `NTFY_TOPIC`,
+   type **Secret**, value = the topic name → **Deploy**.
+4. Paste the latest `worker/src/index.js` into the Worker's code editor and **Deploy** (see "Updating the Worker").
+
+Each upload then sends "New photo upload" with the caption. Tapping it opens the PR.
+
 ## Reviewing uploads
-Each upload arrives as a pull request. You get a GitHub notification (and an email, depending on your notification settings).
+Each upload arrives as a pull request, and you get an ntfy notification (step 6).
 
 1. Open the PR and click the **Files changed** tab to see the photo. The caption is in the PR description and in the `.txt` file.
 2. To **publish** it: go back to the **Conversation** tab, click **Merge pull request**, then **Confirm merge**.

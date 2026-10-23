@@ -41,12 +41,14 @@ export default {
         if (!isJpeg(bytes)) return reply(400, "Photos must be JPEGs.");
 
         const id = `${new Date().toISOString().slice(0, 10).replaceAll("-", "")}-${crypto.randomUUID().slice(0, 8)}`;
+        let pullRequest;
         try {
-            await openPullRequest(env, { id, filename: `upload-${id}.jpg`, bytes, caption });
+            pullRequest = await openPullRequest(env, { id, filename: `upload-${id}.jpg`, bytes, caption });
         } catch (error) {
             console.error(error);
             return reply(502, "Something went wrong saving your photo. Try again later.");
         }
+        await notify(env, pullRequest, caption);
         return reply(200, "Thanks! Your photo will show up here once it's approved.");
     },
 };
@@ -88,7 +90,7 @@ async function openPullRequest(env, { id, filename, bytes, caption }) {
         });
     }
 
-    await github(env, "POST", "/pulls", {
+    return github(env, "POST", "/pulls", {
         title: `Photo upload: ${caption || filename}`,
         head: branch,
         base: "main",
@@ -100,6 +102,22 @@ async function openPullRequest(env, { id, filename, bytes, caption }) {
             "Check the photo under **Files changed**. Merge to publish it, or close this PR to reject it (then delete the branch).",
         ].join("\n"),
     });
+}
+
+// Sends a push notification through ntfy.sh (subscribe to the NTFY_TOPIC topic in the ntfy app); tapping it opens the PR.
+// GitHub itself doesn't notify you, because the PR is opened with your own token. Skipped if NTFY_TOPIC isn't set.
+async function notify(env, pullRequest, caption) {
+    if (!env.NTFY_TOPIC) return;
+    try {
+        const response = await fetch(`https://ntfy.sh/${env.NTFY_TOPIC}`, {
+            method: "POST",
+            headers: { "Title": "New photo upload", "Click": pullRequest.html_url, "Tags": "camera" },
+            body: caption || "(no caption)", // in the body, not a header, because headers can't hold emoji
+        });
+        if (!response.ok) console.error(`ntfy failed: ${response.status} ${await response.text()}`);
+    } catch (error) {
+        console.error(error); // the upload already worked, so don't fail it over a missed notification
+    }
 }
 
 function toBase64(bytes) {
